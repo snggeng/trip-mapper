@@ -32,7 +32,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rspec-rails'
 gem 'guard-bundler'
 gem 'guard-rspec'
-gem 'factory_girl_rails'
 gem 'capybara'
 gem 'geocoder'
 gem 'bootstrap-generators'
@@ -64,3 +63,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_12factor', group: :production
 gem 'devise'
+gem "rails-erd"
