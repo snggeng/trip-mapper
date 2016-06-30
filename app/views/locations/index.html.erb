@@ -1,9 +1,13 @@
 <div class="page-header">
-  <%= link_to new_location_path, class: 'btn btn-primary' do %>
+  <%= link_to trip_path(@trip), data: { turbolinks: false}, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back to Current Trip
+  <% end %>
+  <%= link_to new_trip_location_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New Location
   <% end %>
-  <h1>Listing locations</h1>
+  <h1>Trip Locations</h1>
 </div>
 
 <div class="table-responsive">
@@ -26,9 +30,9 @@
             <td><%= location.longitude %></td>
             <td><%= location.address %></td>
             <td><%= location.activity %></td>
-            <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', trip_location_path(@trip, location) %></td>
+        <td><%= link_to 'Edit', edit_trip_location_path(@trip, location) %></td>
+        <td><%= link_to 'Destroy', trip_location_path(@trip, location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tbody>
   </table>

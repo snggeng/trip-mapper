@@ -1,10 +1,10 @@
 <div class="page-header">
-  <%= link_to locations_path, class: 'btn btn-default' do %>
+  <%= link_to trip_locations_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to @location, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-info-sign"></span>
+  <%= link_to trip_location_path(@trip, @location), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
     Show
   <% end %>
   <h1>Editing location</h1>
