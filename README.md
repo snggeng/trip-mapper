@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Trip Mapper
+Trip Mapper allows users to sign up, log in, and create Trips with other users. Users can join any existing Trip and contribute to the Trip by adding Locations, which are seamlessly mapped out into the overall Trip map using GoogleMaps APIs.
 
-Things you may want to cover:
+==Mobile Responsive== ==Google Maps API== ==Rails== 
 
-* Ruby version
+##Versions:
 
-* System dependencies
+* Ruby version 2.3.2
+* Rails version 5.0
 
-* Configuration
+##Gems used:
+*User Authentication*
+* gem 'devise'
 
-* Database creation
+*Bootstrap and other styling matters* 
+* gem 'record_tag_helper', '~> 1.0'
+* gem 'sdoc', '~> 0.4.0', group: :doc
+* gem 'bootstrap-generators'
 
-* Database initialization
+*Testing*
+* gem 'rspec-rails'
+* gem 'guard-bundler'
+* gem 'guard-rspec'
+* gem 'capybara'
 
-* How to run the test suite
+*Google Maps*
+* gem 'geocoder'
+* gem 'gmaps4rails', '~> 2.0.3'
 
-* Services (job queues, cache servers, search engines, etc.)
+*Model Visualisation*
+* gem "rails-erd"
 
-* Deployment instructions
-
-* ...
+##Heroku
+This project is hosted on Heroku, [here](https://afternoon-mesa-49013.herokuapp.com).
