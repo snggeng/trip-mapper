@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :locations
+    resources :teams, except: [:create]
+    post 'create_team', to: 'teams#create'
   end
 
 

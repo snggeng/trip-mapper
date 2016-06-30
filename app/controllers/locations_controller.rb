@@ -31,18 +31,14 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-    @team = Team.new
-    @user = current_user
+
     respond_to do |format|
       if @location.save
         # Log trip_id inside Locations table
             @trip = Trip.find(params[:trip_id])
             @location.trip_id = @trip.id
-        # Log trip_id and user_id inside Teams table
-            @team.trip_id = @trip.id
-            @team.user_id = @user.id
             @location.save
-            @team.save
+      
         format.html { redirect_to trip_location_path(@trip, @location), notice: 'Location was successfully created.' }
         format.html { redirect_to trip_locations_path(@trip), notice: 'Location was successfully updated.2' }
         format.json { render :show, status: :created, location: @location }

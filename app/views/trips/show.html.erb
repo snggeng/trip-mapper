@@ -7,9 +7,15 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
+
   <%= link_to new_trip_location_path(@trip), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New Location
+  <% end %>
+
+  <%= link_to trip_create_team_path(@trip), method: :create, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Join Trip
   <% end %>
   <h1><%= @trip.name %></h1>
 </div>
