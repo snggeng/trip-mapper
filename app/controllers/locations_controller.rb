@@ -31,13 +31,20 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-
+    @team = Team.new
+    @user = current_user
     respond_to do |format|
       if @location.save
+        # Log trip_id inside Locations table
             @trip = Trip.find(params[:trip_id])
             @location.trip_id = @trip.id
+        # Log trip_id and user_id inside Teams table
+            @team.trip_id = @trip.id
+            @team.user_id = @user.id
             @location.save
+            @team.save
         format.html { redirect_to trip_location_path(@trip, @location), notice: 'Location was successfully created.' }
+        format.html { redirect_to trip_locations_path(@trip), notice: 'Location was successfully updated.2' }
         format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new }
@@ -50,9 +57,12 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1.json
   def update
     @trip = Trip.find(params[:trip_id])
+    @location = Location.find(params[:location_id])
+    @team.trip = @location
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to trip_location_path(@trip, @location), notice: 'Location was successfully updated.' }
+        format.html { redirect_to trip_locations_path(@trip), notice: 'Location was successfully updated.2' }
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }
@@ -85,4 +95,5 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:latitude, :longitude, :address, :activity)
     end
+
 end
