@@ -1,9 +1,8 @@
 # README
 
 #Trip Mapper
-Trip Mapper allows users to sign up, log in, and create Trips with other users. Users can join any existing Trip and contribute to the Trip by adding Locations, which are seamlessly mapped out into the overall Trip map using GoogleMaps APIs.
+Trip Mapper allows users to sign up, log in, and create Trips with other users. Users can join any existing Trip and contribute to the Trip by adding Locations, which are seamlessly mapped out into the overall Trip map using GoogleMaps APIs. This project is mobile responsive and works best on Google Chrome.
 
-==Mobile Responsive== ==Google Maps API== ==Rails== 
 
 ##Versions:
 
