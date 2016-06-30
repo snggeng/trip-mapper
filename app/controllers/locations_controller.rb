@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
 
   # GET /locations
   # GET /locations.json
@@ -49,7 +49,6 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
-    @location = Location.new(location_params)
     @trip = Trip.find(params[:trip_id])
     respond_to do |format|
       if @location.update(location_params)

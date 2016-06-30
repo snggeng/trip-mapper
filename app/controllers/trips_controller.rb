@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /trips
   # GET /trips.json
   def index
@@ -12,7 +12,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @location = Trip.find(params[:id])
-    @locations = Location.all
+    @locations = Location.where(params[:trip_id])
     @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
