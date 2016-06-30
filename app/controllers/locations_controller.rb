@@ -1,12 +1,13 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
-    @location = Location.new
+    # @locations = Location.all.where(:trip_id => @trip)
+    @locations = Location.all.where(trip_id: @trip)
     @trip = Trip.find(params[:trip_id])
   end
 
@@ -38,7 +39,7 @@ class LocationsController < ApplicationController
             @trip = Trip.find(params[:trip_id])
             @location.trip_id = @trip.id
             @location.save
-      
+
         format.html { redirect_to trip_location_path(@trip, @location), notice: 'Location was successfully created.' }
         format.html { redirect_to trip_locations_path(@trip), notice: 'Location was successfully updated.2' }
         format.json { render :show, status: :created, location: @location }
@@ -84,7 +85,7 @@ class LocationsController < ApplicationController
     end
 
     def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = Trip.find(params[:trip_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

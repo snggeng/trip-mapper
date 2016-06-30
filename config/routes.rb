@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
+  get 'about', to: 'teams#index'
 
   resources :trips do
     resources :locations

@@ -1,10 +1,14 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_trip
+
+
+  def index
+  end
 
   def create
     @user = current_user
+    @trip = Trip.find(params[:trip_id])
     @team = Team.create({
       user_id: current_user.id,
       trip_id: Trip.find(params[:trip_id]).id,
@@ -12,7 +16,6 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-
         format.html { redirect_to trip_path(@trip), notice: 'Welcome to this trip!' }
         format.json { render :show, status: :created, location: @role }
       else

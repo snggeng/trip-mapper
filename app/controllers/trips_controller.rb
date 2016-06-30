@@ -12,7 +12,8 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @location = Trip.find(params[:id])
-    @locations = Location.where(params[:trip_id])
+    @locations = Location.all.where(:trip_id => @trip)
+    # @locationz = Location.where(params[:trip_id])
     @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
@@ -34,7 +35,7 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(trip_params)
-    
+
     respond_to do |format|
       if @trip.save
         format.html { redirect_to trips_path, notice: 'Trip was successfully created.' }

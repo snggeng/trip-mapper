@@ -7,23 +7,14 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
   <% end %>
+  <%= link_to user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-remove"></span>
+    Delete
+  <% end %>
   <h1>Show user</h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Latitude:</dt>
-  <dd><%= @user.latitude %></dd>
-
-  <dt>Longitude:</dt>
-  <dd><%= @user.longitude %></dd>
-
-  <dt>Name:</dt>
-  <dd><%= @user.name %></dd>
-
-  <dt>Adress:</dt>
-  <dd><%= @user.address %></dd>
-
-  <dt>Title:</dt>
-  <dd><%= @user.title %></dd>
-
+  <dt>Email:</dt>
+  <dd><%= @user.email %></dd>
 </dl>

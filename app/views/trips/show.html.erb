@@ -7,15 +7,18 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-
-  <%= link_to new_trip_location_path(@trip), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Location
-  <% end %>
-
-  <%= link_to trip_create_team_path(@trip), method: :create, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    Join Trip
+<!-- create is_user_team_member? method in application controller to check for team -->
+    <% if is_user_in_team? %>
+      <%= link_to new_trip_location_path(@trip), class: 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        New Location
+      <% end %>
+    <% end %>
+  <% if !is_user_in_team? %>
+    <%= link_to trip_create_team_path(@trip), method: :create, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Join Trip
+    <% end %>
   <% end %>
   <h1><%= @trip.name %></h1>
 </div>
@@ -32,9 +35,11 @@
               <th>Longitude</th>
               <th>Address</th>
               <th>Activity</th>
+          <% if is_user_in_team? %>
               <th></th>
-          <th></th>
-          <th></th>
+              <th></th>
+              <th></th>
+          <% end %>
         </tr>
       </thead>
 
@@ -44,17 +49,19 @@
               <td><%= location.longitude %></td>
               <td><%= location.address %></td>
               <td><%= location.activity %></td>
-              <td><%= link_to 'Show', trip_location_path(@location, location) %></td>
-          <td><%= link_to 'Edit', edit_trip_location_path(@location, location) %></td>
-          <td><%= link_to 'Destroy', trip_location_path(@location, location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if is_user_in_team? %>
+              <td><%= link_to 'Show', trip_location_path(@trip, location) %></td>
+              <td><%= link_to 'Edit', edit_trip_location_path(@trip, location) %></td>
+              <td><%= link_to 'Destroy', trip_location_path(@trip, location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
 
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div style='height:400px; position: relative; padding-bottom: 75%; height: 0; overflow:hidden'>
+  <div id="map" style='width: 100%; height: 100%; position: absolute; top: 0; left: 0;'></div>
 </div>
 
 <script type="text/javascript">
