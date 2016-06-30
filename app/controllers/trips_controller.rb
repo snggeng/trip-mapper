@@ -11,6 +11,7 @@ class TripsController < ApplicationController
   # GET /trips/1.json
   def show
     @trip = Trip.find(params[:id])
+    @team = Team.find(params[:id])
     @location = Trip.find(params[:id])
     @locations = Location.all.where(:trip_id => @trip)
     # @locationz = Location.where(params[:trip_id])
