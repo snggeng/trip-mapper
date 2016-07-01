@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
     @trip = Trip.find(params[:id])
     @teams = Team.all
     @teams.each do |team|
-      if team.trip_id != @trip && team.user_id != current_user
+      if team.trip_id == @trip.id && team.user_id == current_user.id
+        return true
       end
     end
+    return false
   end
 end
