@@ -1,15 +1,15 @@
 # README
 
-#Trip Mapper
+# Trip Mapper
 Trip Mapper allows users to sign up, log in, and create Trips with other users. Users can join any existing Trip and contribute to the Trip by adding Locations, which are seamlessly mapped out into the overall Trip map using GoogleMaps APIs. This project is mobile responsive and works best on Google Chrome.
 
 
-##Versions:
+## Versions:
 
 * Ruby version 2.3.2
 * Rails version 5.0
 
-##Gems used:
+## Gems used:
 *User Authentication*
 * gem 'devise'
 
@@ -31,5 +31,5 @@ Trip Mapper allows users to sign up, log in, and create Trips with other users. 
 *Model Visualisation*
 * gem "rails-erd"
 
-##Heroku
+## Heroku
 This project is hosted on Heroku, [here](https://afternoon-mesa-49013.herokuapp.com).
